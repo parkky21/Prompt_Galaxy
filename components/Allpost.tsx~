@@ -1,0 +1,15 @@
+"use client"
+import React from 'react'
+
+const Allpost = () => {
+    const fetchPosts = async () => {
+        const response = await fetch("/api/prompt");
+        const data = await response.json();
+        console.log(data);
+    };
+
+    return (
+        <button onClick={fetchPosts}>Fetch</button>
+    )
+}
+export default Allpost
