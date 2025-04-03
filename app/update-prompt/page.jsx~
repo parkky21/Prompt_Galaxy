@@ -21,8 +21,8 @@ const UpdatePrompt = () => {
       if(!data) console.log("no data")
 
       setPost({
-        prompt: data.prompt,
-        tag: data.tag,
+        prompt: data[0].prompt,
+        tag: data[0].tag,
       });
     };
     if (promptId) getPromptDetails();

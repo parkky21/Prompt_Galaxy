@@ -1,16 +1,16 @@
 "use client";
-import React from "react";
+import React, {Suspense} from "react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import Profile from "@components/Profile";
+import Loading from "@app/profile/loading";
 
 const UserProfile = ({ params }) => {
   const searchParams = useSearchParams();
   const {id}=React.use(params)
 
   const [userPosts, setUserPosts] = useState([]);
-  console.log(userPosts[0])
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -22,14 +22,19 @@ const UserProfile = ({ params }) => {
     if (id) fetchPosts();
   }, []);
 
-  console.log(userPosts[0])
 
   return (
-    <Profile
-      name={userPosts[0].username}
-      desc={`Welcome to ${userPosts[0].username}'s personalized profile page. Explore ${userPosts[0].username}'s exceptional prompts and be inspired by the power of their imagination`}
-      data={userPosts}
-    />
+      <>
+          {userPosts.length === 0 ? (
+              <Loading />
+          ) : (
+              <Profile
+                  name={userPosts[0]?.username}
+                  desc={`Welcome to ${userPosts[0]?.username}'s profile.`}
+                  data={userPosts}
+              />
+          )}
+      </>
   );
 };
 

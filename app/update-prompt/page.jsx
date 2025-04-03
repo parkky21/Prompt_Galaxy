@@ -15,10 +15,10 @@ const UpdatePrompt = () => {
 
   useEffect(() => {
     const getPromptDetails = async () => {
-      console.log(promptId)
+
       const response = await fetch(`/api/prompt/${promptId}`);
       const data = await response.json();
-      if(!data) console.log("no data")
+
 
       setPost({
         prompt: data[0].prompt,

@@ -2,9 +2,9 @@
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-
+import {redirect, useRouter} from "next/navigation";
 import Profile from "@components/Profile";
+
 
 const MyProfile = () => {
   const router = useRouter();
@@ -36,8 +36,7 @@ const MyProfile = () => {
         await fetch(`/api/prompt/${post.post_id}`, {
           method: "DELETE",
         });
-
-        const filteredPosts = myPosts.filter((item) => item._id !== post._id);
+        const filteredPosts = myPosts.filter((item) => item.post_id !== post.post_id);
 
         setMyPosts(filteredPosts);
       } catch (error) {

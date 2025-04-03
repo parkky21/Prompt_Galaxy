@@ -4,7 +4,8 @@ const Loading = () => {
   return (
     <div className='w-full flex-center'>
       <Image
-        src='/assets/icons/ripples.svg'
+        // src='public/assets/icons/loader.svg'
+        src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/svg/spinner.svg"
         width={50}
         height={50}
         alt='loader'
